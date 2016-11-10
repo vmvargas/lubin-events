@@ -1,4 +1,6 @@
 <ion-view view-title="Sessions">
+
+
   <ion-content>
     <!--<ion-list>
       <ion-item ng-repeat="session in sessions"
@@ -10,17 +12,20 @@
  <div class="item item-divider">
     Candy Bars
   </div>
-    <a class="item item-avatar" ng-repeat="session in sessions" href="#/app/sessions/{{session.id}}">
+    <a class="item item-avatar" ng-repeat="session in sessions" href="#/app/sessions/{{session.Event_id}}">
     <img src="img/venkman.jpg">
       <!--{{session.title}}-->
-      <h2>{{session.title}}</h2>
-      <p>{{session.time}}</p>
+      <h2>{{session.Headline}}</h2>
+      <p>{{session.Subheader}}</p>
       <!--<p>{{session.speaker}}</p>-->
     </a>
  <div class="item item-divider">
     Candy Bars
   </div>
 </div>
+
+
+
 
   </ion-content>
 </ion-view>
