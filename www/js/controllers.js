@@ -86,24 +86,6 @@ angular.module('starter.controllers', ['starter.services', 'jett.ionic.filter.ba
         });
     };
 
-// $scope.convertTo24Hour  = function (time) {
-//   var colon = timeStr.indexOf(':');
-//   var hours = timeStr.substr(0, colon),
-//       minutes = timeStr.substr(colon+1, 2),
-//       meridian = timeStr.substr(colon+4, 2).toUpperCase();
- 
-  
-//   var hoursInt = parseInt(hours, 10),
-//       offset = meridian == 'PM' ? 12 : 0;
-  
-//   if (hoursInt === 12) {
-//     hoursInt = offset;
-//   } else {
-//     hoursInt += offset;
-//   }
-//   return hoursInt + ":" + minutes;
-// }
-
 $scope.getDayName  = function (month, day, year) {
     var d = new Date(year, month, day);
     var weekday = new Array(7);
@@ -155,10 +137,6 @@ $scope.convertTo24Hour  = function (time) {
     return time.replace(/(a.m.|p.m.)/, '');
 }
 
-$scope.tmptest  = function (tmpVal) {
-    return tmpVal;
-}
-
     // $scope.refreshItems = function () {
     //     if (filterBarInstance) {
     //         filterBarInstance();
@@ -173,12 +151,17 @@ $scope.tmptest  = function (tmpVal) {
 
 })
 
-.controller('SessionCtrl', function ($scope, $stateParams, Session) {
+.controller('SessionCtrl', function ($scope, $stateParams, Session, singleSesson) {
+
+    singleSesson.get().then(function(session) {
+        console.log("events", session);  
+        $scope.session = session;
+    });
 
 
-        $scope.session = Session.get({
-            sessionId: $stateParams.sessionId
-        });
+        // $scope.session = singleSesson.get({
+        //     sessionId: $stateParams.sessionId
+        // });
 
         $scope.addToCalendar = function () {
             if (window.plugins && window.plugins.calendar) {
@@ -213,47 +196,4 @@ $scope.tmptest  = function (tmpVal) {
             console.log("events", events);
             $scope.events = events;
         });
-
-        //   	$ionicPlatform.ready(function() {
-        // 	Events.get().then(function(events) {
-        // 		console.log("events", JSON.stringify(events));	
-        // 		$scope.events = events;
-        // 	});
-        // });
-
-        // $scope.addEvent = function(event,idx) {
-        // 	console.log("add ",event);
-
-        //     // Add to calendar interactively (vs silently):
-        // window.plugins.calendar.createEventInteractively({
-        //   title: event.title,
-        //   // location: event.location,
-        //   notes: event.description,
-        //   startDate: date,
-        //   endDate: date
-        //   // startDate: new Date(2015, 0, 6, 18, 30, 0, 0, 0),
-        //   // endDate: new Date(2015, 1, 6, 12, 0, 0, 0, 0)
-        // }).then(function (result) {
-        //   // success
-        // }, function (err) {
-        //   alert('Oops, something went wrong');
-        // });
-
-        // // Events.add(event).then(function(result) {
-        // // 	console.log("done adding event, result is "+result);
-        // // 	if(result === 1) {
-        // // 		//update the event
-        // // 		$timeout(function() {
-        // // 			$scope.events[idx].status = true;
-        // // 			$scope.$apply();
-        // // 		});
-        // // 	} else {
-        // // 		//For now... maybe just tell the user it didn't work?
-        // // 	}
-        // // });
-        // };
-
-
-
-
     });
