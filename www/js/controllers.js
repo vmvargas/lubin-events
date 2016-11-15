@@ -151,17 +151,17 @@ $scope.convertTo24Hour  = function (time) {
 
 })
 
-.controller('SessionCtrl', function ($scope, $stateParams, Session, singleSesson) {
+.controller('SessionCtrl', function ($scope, $stateParams, Session) {
 
-    singleSesson.get().then(function(session) {
-        console.log("events", session);  
-        $scope.session = session;
-    });
+    // singleSesson.get().then(function(session) {
+    //     console.log("events", session);  
+    //     $scope.session = session;
+    // });
 
 
-        // $scope.session = singleSesson.get({
-        //     sessionId: $stateParams.sessionId
-        // });
+        $scope.session = Session.get({
+            sessionId: $stateParams.sessionId
+        });
 
         $scope.addToCalendar = function () {
             if (window.plugins && window.plugins.calendar) {
