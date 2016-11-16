@@ -149,6 +149,17 @@ $scope.convertTo24Hour  = function (time) {
     //     }, 1000);
     // };
 
+$scope.dayNumber = 0;
+$scope.showDate  = function (num) {
+    if($scope.dayNumber!=num){
+        $scope.dayNumber=num;
+        return true;
+    }else{
+        $scope.dayNumber=num;
+        return false;
+    }
+}
+
 })
 
 .controller('SessionCtrl', function ($scope, $stateParams, Session) {
@@ -163,7 +174,8 @@ $scope.convertTo24Hour  = function (time) {
             sessionId: $stateParams.sessionId
         });
 
-        $scope.addToCalendar = function () {
+        $scope.addToCalendar = function (mess) {
+            alert(mess);
             if (window.plugins && window.plugins.calendar) {
                 // var hour = $scope.session.time.substring(0,$scope.session.time.indexOf(':'));
                 // if ($scope.session.time.indexOf("pm")>-1)

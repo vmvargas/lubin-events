@@ -1,29 +1,40 @@
 <ion-view view-title="Session">
-  <ion-content>
+  <ion-content class="has-footer">
     <div class="list card">
+
       <div class="item">
-        <h3>{{session.Headline}}</h3>
-        <h2>{{session.Subheader}}</h2>
-        <p>{{session.Building}}</p>
+        <p ng-if="session.Sponsored_by">{{session.Sponsored_by}} presents</p>
+        <h3 ng-if="session.Headline">{{session.Headline}}</h3>
+        <h2 ng-if="session.Subheader">{{session.Subheader}}</h2>
+        <p ng-if="session.Building">{{session.Building}}</p>
       </div>
+
       <div class="item item-body">
-        <p>{{session.Message}}</p>
+        <p ng-if="session.Message">{{session.Message}}</p>
       </div>
+
       <div class="item tabs tabs-secondary tabs-icon-left">
         <a class="tab-item">
-          <i class="icon ion-plus-circled"></i>
-          Like
+          <i class="icon ion-plus-circled"></i> Like
         </a>
 
-        <a class="tab-item" ng-click="addToCalendar()">
+        <a class="tab-item" ng-click="addToCalendar(session.Headline)">
           <i class="icon ion-plus-round"></i>Add
         </a>
 
         <a class="tab-item">
-          <i class="icon ion-android-calendar"></i>
-          Share
+          <i class="icon ion-android-calendar"></i> Share
         </a>
       </div>
+
     </div>
+
   </ion-content>
+<div class="bar bar-footer bar-positive">
+   
+   <!--<button class="button icon ion-home"></button>
+   <button class="button icon ion-star"></button>-->
+   <button class="button icon ion-share"> Share</button>
+   <button class="button icon ion-android-calendar"> Add to Calendar</button>
+</div>
 </ion-view>
