@@ -1,4 +1,8 @@
-<ion-view view-title="Session">
+<ion-view view-title="Event Discription">
+  <ion-nav-bar class="bar-positive">
+    <ion-nav-back-button>
+    </ion-nav-back-button>
+  </ion-nav-bar>
   <ion-content class="has-footer">
     <div class="list card">
 
@@ -13,7 +17,7 @@
         <p ng-if="session.Message">{{session.Message}}</p>
       </div>
 
-      <div class="item tabs tabs-secondary tabs-icon-left">
+      <!--<div class="item tabs tabs-secondary tabs-icon-left">
         <a class="tab-item">
           <i class="icon ion-plus-circled"></i> Like
         </a>
@@ -25,16 +29,22 @@
         <a class="tab-item">
           <i class="icon ion-android-calendar"></i> Share
         </a>
-      </div>
+      </div>-->
 
     </div>
 
   </ion-content>
-<div class="bar bar-footer bar-positive">
-   
-   <!--<button class="button icon ion-home"></button>
-   <button class="button icon ion-star"></button>-->
-   <button class="button icon ion-share"> Share</button>
-   <button class="button icon ion-android-calendar"> Add to Calendar</button>
-</div>
+  <ion-footer-bar align-title="left" class="bar bar-footer bar-stable">
+  <!--<div class="buttons">-->
+    <button class="button icon ion-share"> Share</button>
+  <!--</div>-->
+  <!--<h1 class="title">Title!</h1>-->
+  <!--<div class="buttons" ng-click="doSomething()">-->
+    <button class="button icon ion-android-calendar"> Add to Calendar</button>
+  <!--</div>-->
+</ion-footer-bar>
+  <!--<div class="bar bar-footer bar-positive">
+    <button class="button icon ion-share"> Share</button>
+    <button class="button icon ion-android-calendar"> Add to Calendar</button>
+  </div>-->
 </ion-view>

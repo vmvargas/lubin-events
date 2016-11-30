@@ -6,8 +6,8 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers'])
 
-.run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
+.run(function ($ionicPlatform) {
+  $ionicPlatform.ready(function () {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -22,54 +22,76 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-    .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
-  })
+    .state('tabs', {
+      url: '/tab',
+      abstract: true,
+      templateUrl: 'templates/tabs.html'
+    })
+    .state('tabs.events', {
+      url: "/events",
+      views: {
+        'events-tab': {
+          templateUrl: "templates/sessions.html",
+          controller: 'SessionsCtrl'
+        }
+      }
+    })
+    .state('tabs.eventDiscription', {
+      url: "/events/:sessionId",
+      views: {
+        'events-tab': {
+          templateUrl: "templates/session.html",
+          controller: 'SessionCtrl'
+        }
+      }
+    })
+    .state('tabs.announcements', {
+      url: "/announcements",
+      views: {
+        'announcements-tab': {
+          templateUrl: "templates/announcements.html"
+        }
+      }
+    })
+    // .state('app.search', {
+    //   url: '/search',
+    //   views: {
+    //     'menuContent': {
+    //       templateUrl: 'templates/search.html',
+    //       controller: 'SearchCtrl'
+    //     }
+    //   }
+    // })
 
-  .state('app.search', {
-    url: '/search',
+  // .state('app.browse', {
+  //     url: '/browse',
+  //     views: {
+  //       'menuContent': {
+  //         templateUrl: 'templates/browse.html',
+  //         controller: 'ExampleController'
+  //       }
+  //     }
+  //   })
+  // .state('tabs.sessions', {
+  //     url: "/sessions",
+  //     views: {
+  //         'menuContent': {
+  //             templateUrl: "templates/sessions.html",
+  //             controller: 'SessionsCtrl'
+  //         }
+  //       }
+  //   })
+  .state('tabs.contact', {
+    url: "/contact",
     views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html',
-        controller: 'SearchCtrl'
+      'contact-tab': {
+        templateUrl: "templates/contact.html"
       }
     }
-  })
-
-  .state('app.browse', {
-      url: '/browse',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/browse.html',
-          controller: 'ExampleController'
-        }
-      }
-    })
-  .state('app.sessions', {
-      url: "/sessions",
-      views: {
-          'menuContent': {
-              templateUrl: "templates/sessions.html",
-              controller: 'SessionsCtrl'
-          }
-        }
-    })
-
-  .state('app.session', {
-      url: "/sessions/:sessionId",
-      views: {
-          'menuContent': {
-            templateUrl: "templates/session.html",
-            controller: 'SessionCtrl'
-        }
-      }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/sessions');
+  $urlRouterProvider.otherwise('/tab/events');
 });
