@@ -25,8 +25,8 @@
           {{getDayName(session.Start_Year, session.Start_Month, session.Start_Day)}}, {{getMonthName(session.Start_Month)}} {{session.Start_Day}}
           {{session.Start_Year}}
         </div>
-        <a class="item item-avatar" href="#/tab/events/{{session.Event_id}}">
-          <img src="img/venkman.jpg">
+        <a class="item" href="#/tab/events/{{session.Event_id}}">
+         
           <h2>{{session.Headline}}</h2>
           <p>{{session.Subheader}}</p>
           <p>{{session.Start_TimeHr + ':' + session.Start_TimeMin + ' ' + session.Start_TimeAMPM + ' to ' + session.End_Time_Hr

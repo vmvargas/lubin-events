@@ -19,6 +19,7 @@
     <!--<ion-refresher pulling-icon="ion-arrow-down-b" on-refresh="refreshItems()">
     </ion-refresher>-->
 
+
     <div class="list">
       <div ng-repeat="announ in announs">
 
@@ -26,8 +27,8 @@
           {{getDayName(session.Start_Year, session.Start_Month, session.Start_Day)}}, {{getMonthName(session.Start_Month)}} {{session.Start_Day}}
           {{session.Start_Year}}
         </div>-->
-        <a class="item item-avatar" href="#/tab/announcements/{{announ.Announ_id}}">
-          <img src="img/venkman.jpg">
+        <a class="item" href="#/tab/announcements/{{announ.Announ_id}}">
+          
           <h2>{{announ.Headline}}</h2>
           <p>{{announ.Subheader}}</p>
           <!--<p>{{session.Start_TimeHr + ':' + session.Start_TimeMin + ' ' + session.Start_TimeAMPM + ' to ' + session.End_Time_Hr
