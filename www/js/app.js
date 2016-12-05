@@ -24,7 +24,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
 .config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
-
     .state('tabs', {
       url: '/tab',
       abstract: true,
@@ -34,17 +33,17 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: "/events",
       views: {
         'events-tab': {
-          templateUrl: "templates/sessions.html",
-          controller: 'SessionsCtrl'
+          templateUrl: "templates/events.html",
+          controller: 'EventsCtrl'
         }
       }
     })
     .state('tabs.eventDiscription', {
-      url: "/events/:sessionId",
+      url: "/events/:eventId",
       views: {
         'events-tab': {
-          templateUrl: "templates/session.html",
-          controller: 'SessionCtrl'
+          templateUrl: "templates/event.html",
+          controller: 'EventCtrl'
         }
       }
     })
@@ -52,7 +51,17 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: "/announcements",
       views: {
         'announcements-tab': {
-          templateUrl: "templates/announcements.html"
+          templateUrl: "templates/announcements.html",
+          controller: 'AnnounsCtrl'
+        }
+      }
+    })
+    .state('tabs.announDiscription', {
+      url: "/announcements/:announId",
+      views: {
+        'announcements-tab': {
+          templateUrl: "templates/announcement.html",
+          controller: 'AnnounCtrl'
         }
       }
     })

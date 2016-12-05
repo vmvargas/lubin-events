@@ -1,52 +1,7 @@
 angular.module('starter.controllers', ['starter.services', 'jett.ionic.filter.bar'])
-    // .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
-
-    //     // With the new view caching in Ionic, Controllers are only called
-    //     // when they are recreated or on app start, instead of every page change.
-    //     // To listen for when this page is active (for example, to refresh data),
-    //     // listen for the $ionicView.enter event:
-    //     //$scope.$on('$ionicView.enter', function(e) {
-    //     //});
-
-    //     // Form data for the login modal
-    //     $scope.loginData = {};
-
-    //     // Create the login modal that we will use later
-    //     $ionicModal.fromTemplateUrl('templates/login.html', {
-    //         scope: $scope
-    //     }).then(function (modal) {
-    //         $scope.modal = modal;
-    //     });
-
-    //     // Triggered in the login modal to close it
-    //     $scope.closeLogin = function () {
-    //         $scope.modal.hide();
-    //     };
-
-    //     // Open the login modal
-    //     $scope.login = function () {
-    //         $scope.modal.show();
-    //     };
-
-    //     // Perform the login action when the user submits the login form
-    //     $scope.doLogin = function () {
-    //         console.log('Doing login', $scope.loginData);
-
-    //         // Simulate a login delay. Remove this and replace with your login
-    //         // code if using a login system
-    //         $timeout(function () {
-    //             $scope.closeLogin();
-    //         }, 1000);
-    //     };
-    // })
-
-.controller('SearchCtrl', function ($scope, Session) {
+.controller('SearchCtrl', function ($scope, Event) {
     $scope.addToCalendar = function () {
         if (window.plugins && window.plugins.calendar) {
-            // var hour = $scope.session.time.substring(0,$scope.session.time.indexOf(':'));
-            // if ($scope.session.time.indexOf("pm")>-1)
-            //     hour = parseInt(hour)+12;
-
             var today = new Date();
             console.log("Date year" + today.getFullYear() + " mo " + today.getMonth() + " day " + today.getDate());
             var startDate = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 15, 00, 00);
@@ -69,11 +24,11 @@ angular.module('starter.controllers', ['starter.services', 'jett.ionic.filter.ba
 
 })
 
-.controller('SessionsCtrl', function ($scope, $timeout, $ionicFilterBar, Session) {
-      console.log('SessionsCtrl');
+.controller('EventsCtrl', function ($scope, $timeout, $ionicFilterBar, Event) {
+      console.log('EventsCtrl');
     var filterBarInstance;
 
-    $scope.sessions = Session.query();
+    $scope.sessions = Event.query();
     console.log($scope.sessions);
     
     $scope.showFilterBar = function () {
@@ -164,27 +119,14 @@ $scope.showDate  = function (num) {
 
 })
 
-.controller('SessionCtrl', function ($scope, $stateParams, Session) {
-
-    // singleSesson.get().then(function(session) {
-    //     console.log("events", session);  
-    //     $scope.session = session;
-    // });
-
-
-console.log(Session.sessionsvar);
-
-        $scope.session = Session.get({
-            sessionId: $stateParams.sessionId
+.controller('EventCtrl', function ($scope, $stateParams, Event) {
+        $scope.session = Event.get({
+            eventId: $stateParams.eventId
         });
 
         $scope.addToCalendar = function (mess) {
             alert(mess);
             if (window.plugins && window.plugins.calendar) {
-                // var hour = $scope.session.time.substring(0,$scope.session.time.indexOf(':'));
-                // if ($scope.session.time.indexOf("pm")>-1)
-                //     hour = parseInt(hour)+12;
-
                 var today = new Date();
                 console.log("Date year" + today.getFullYear() + " mo " + today.getMonth() + " day " + today.getDate());
                 var startDate = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 15, 00, 00);
@@ -206,6 +148,31 @@ console.log(Session.sessionsvar);
         };
 
     })
+.controller('AnnounCtrl', function ($scope, $stateParams, Announ) {
+        $scope.announ = Announ.get({
+            announId: $stateParams.announId
+        });
+    })
+    .controller('AnnounsCtrl', function ($scope, $timeout, $ionicFilterBar, Announ) {
+      console.log('AnnounsCtrl');
+    var filterBarInstance;
+
+    $scope.announs = Announ.query();
+    console.log($scope.announs);
+    
+    $scope.showFilterBar = function () {
+        filterBarInstance = $ionicFilterBar.show({
+            items: $scope.announs,
+            update: function (filteredItems, filterText) {
+                $scope.announs = filteredItems;
+                if (filterText) {
+                    console.log(filterText);
+                }
+            }
+        });
+    };
+
+})
     .controller('ExampleController', function ($scope, Events) {
 
         Events.get($cordovaCalendar).then(function (events) {
