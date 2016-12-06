@@ -6,41 +6,30 @@
   <ion-content class="has-footer">
     <div class="list card">
 
-      <div class="item">
+      <div class="item item-text-wrap">
         <p ng-if="announ.Sponsored_by">{{announ.Sponsored_by}} presents</p>
         <h3 ng-if="announ.Headline">{{announ.Headline}}</h3>
         <h2 ng-if="announ.Subheader">{{announ.Subheader}}</h2>
-        <!--<p ng-if="session.Building">{{session.Building}}</p>-->
+        <hr ng-if="announ.AnnouncementFor || announ.AnnouncementFor != 'Both' || announ.RSVP_Link">
+
+        <h2 ng-if="announ.AnnouncementFor && announ.AnnouncementFor != 'Both'" class="icon ion-tshirt-outline"> Announcement For:</h2>
+        <p ng-if="announ.AnnouncementFor && announ.AnnouncementFor != 'Both'" class="padding">{{announ.AnnouncementFor}}</p>
+        
+        <h2 ng-if="announ.Attachment_Link" class="icon ion-paperclip"> Attachment Link:</h2>
+        <a ng-if="announ.Attachment_Link" ng-click="openInExternalBrowser(announ.Attachment_Link)" class="padding">{{announ.Attachment_Link}}</a>
+
+        <h2 ng-if="announ.RSVP_Link" class="icon ion-link"> RSVP:</h2>
+        <a ng-if="announ.RSVP_Link" ng-click="openInExternalBrowser(announ.RSVP_Link)" class="padding">{{announ.RSVP_Link}}</a>
+
+        <!--<p ng-if="announ.Building">{{announ.Building}}</p>-->
       </div>
 
       <div class="item item-body">
         <p ng-if="announ.Message">{{announ.Message}}</p>
+        <p ng-if="!announ.Message">No Message Provided</p>
       </div>
-
-      <!--<div class="item tabs tabs-secondary tabs-icon-left">
-        <a class="tab-item">
-          <i class="icon ion-plus-circled"></i> Like
-        </a>
-
-        <a class="tab-item" ng-click="addToCalendar(session.Headline)">
-          <i class="icon ion-plus-round"></i>Add
-        </a>
-
-        <a class="tab-item">
-          <i class="icon ion-android-calendar"></i> Share
-        </a>
-      </div>-->
 
     </div>
 
   </ion-content>
-  <!--<ion-footer-bar align-title="left" class="bar bar-footer bar-stable">
-    <button class="button icon ion-share"> Share</button>
-    <button class="button icon ion-android-calendar"> Add to Calendar</button>
-</ion-footer-bar>-->
-
-  <!--<div class="bar bar-footer bar-positive">
-    <button class="button icon ion-share"> Share</button>
-    <button class="button icon ion-android-calendar"> Add to Calendar</button>
-  </div>-->
 </ion-view>

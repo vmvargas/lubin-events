@@ -5,62 +5,49 @@
   </ion-nav-bar>
   <ion-content class="has-footer">
     <div class="list card">
-      <div class="item">
+      <div class="item item-text-wrap">
         <p ng-if="session.Sponsored_by">{{session.Sponsored_by}} presents</p>
         <h3 ng-if="session.Headline">{{session.Headline}}</h3>
         <h2 ng-if="session.Subheader">{{session.Subheader}}</h2>
         <hr>
-        <h2 class="icon ion-clock"> When:</h2>
-        <p>{{getDayName(session.Start_Year, session.Start_Month, session.Start_Day)}}, {{getMonthName(session.Start_Month)}}
+        <h2 class="ion-ios-clock-outline"> When:</h2>
+        <p class="padding">{{getDayName(session.Start_Year, session.Start_Month, session.Start_Day)}}, {{getMonthName(session.Start_Month)}}
           {{session.Start_Day}} {{session.Start_Year}}
         </p>
-        <h2 ng-if="session.Room || session.Building || session.Campus" class="icon ion-ios-location"> Address:</h2>
+        <h2 ng-if="session.Room || session.Building || session.Campus" class="icon ion-ios-location-outline"> Address:</h2>
+        <div class="padding">
         <p ng-if="session.Room">{{session.Room}}</p>
         <p ng-if="session.Building">{{session.Building}}</p>
         <p ng-if="session.Campus">{{session.Campus}}</p>
+        </div>
+
+
+        <h2 ng-if="session.AnnouncementFor && session.AnnouncementFor != 'Both'" class="icon ion-tshirt-outline"> Announcement For:</h2>
+        <p ng-if="session.AnnouncementFor && session.AnnouncementFor != 'Both'" class="padding">{{session.AnnouncementFor}}</p>
 
         <h2 ng-if="session.Attire && session.Attire != 'Any'" class="icon ion-tshirt-outline"> Attire:</h2>
-        <p ng-if="session.Attire && session.Attire != 'Any'">{{session.Attire}}</p>
+        <p ng-if="session.Attire && session.Attire != 'Any'" class="padding">{{session.Attire}}</p>
 
         <h2 ng-if="session.Food_Provided && session.Food_Provided != 'No'" class="icon ion-pizza"> Food:</h2>
-        <p ng-if="session.Food_Provided && session.Food_Provided != 'No'">{{session.Food_Provided}}</p>
+        <p ng-if="session.Food_Provided && session.Food_Provided != 'No'" class="padding">{{session.Food_Provided}}</p>
 
         <h2 ng-if="session.Attachment_Link" class="icon ion-paperclip"> Attachment Link:</h2>
-        <!--<a href="{{session.Attachment_Link}}" ng-if="session.Attachment_Link">{{session.Attachment_Link}}</a>-->
+        <a ng-if="session.Attachment_Link" ng-click="openInExternalBrowser(session.Attachment_Link)" class="padding">{{session.Attachment_Link}}</a>
 
-        <a ng-if="session.Attachment_Link" href="#" onclick="window.open('" + {{session.Attachment_Link}} + "', '_system', 'location=yes'); return false;">
-                {{session.Attachment_Link}}
-            </a>
+        <h2 ng-if="session.RSVP_Link" class="icon ion-link"> RSVP:</h2>
+        <a ng-if="session.RSVP_Link" ng-click="openInExternalBrowser(session.RSVP_Link)" class="padding">{{session.RSVP_Link}}</a>
+
       </div>
       <div class="item item-body">
+        <h3 class="ion-social-twitch-outline"> Description:</h3>
         <p ng-if="session.Message">{{session.Message}}</p>
+        <p ng-if="!session.Message">No Description Provided</p>
       </div>
-      <!--<div class="item tabs tabs-secondary tabs-icon-left">
-        <a class="tab-item">
-          <i class="icon ion-plus-circled"></i> Like
-        </a>
 
-        <a class="tab-item" ng-click="addToCalendar(session.Headline)">
-          <i class="icon ion-plus-round"></i>Add
-        </a>
-
-        <a class="tab-item">
-          <i class="icon ion-android-calendar"></i> Share
-        </a>
-      </div>-->
     </div>
   </ion-content>
   <ion-footer-bar align-title="left" class="bar bar-footer bar-stable">
-    <!--<div class="buttons">-->
-    <button class="button icon ion-share"> Share</button>
-    <!--</div>-->
-    <!--<h1 class="title">Title!</h1>-->
-    <!--<div class="buttons" ng-click="doSomething()">-->
+    <button class="button icon ion-share" ng-click="show()"> Share</button>
     <button class="button icon ion-android-calendar" ng-click="addToCalendar(session)"> Add to Calendar</button>
-    <!--</div>-->
   </ion-footer-bar>
-  <!--<div class="bar bar-footer bar-positive">
-    <button class="button icon ion-share"> Share</button>
-    <button class="button icon ion-android-calendar"> Add to Calendar</button>
-  </div>-->
 </ion-view>

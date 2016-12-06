@@ -19,7 +19,7 @@
     <!--<ion-refresher pulling-icon="ion-arrow-down-b" on-refresh="refreshItems()">
     </ion-refresher>-->
 
-    <div class="list">
+    <div class="list item-text-wrap">
       <div ng-repeat="session in sessions">
         <div class="item item-divider" style="" ng-if="showDate(session.Start_Day)">
           {{getDayName(session.Start_Year, session.Start_Month, session.Start_Day)}}, {{getMonthName(session.Start_Month)}} {{session.Start_Day}}
