@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.listservapp333363" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>ListServApp</name>
+  <name>Lubin Events</name>
   <description>&#xD;
         Lubin's Events and Announcements listing app.&#xD;
     </description>
@@ -9,6 +9,9 @@
     </author>
   <content src="index.html"/>
   <access origin="*"/>
+  <access origin="tel:*" launch-external="yes" />
+  <access origin="mailto:*" launch-external="yes" />
+
   <platform name="ios">
     <preference name="KeyboardDisplayRequiresUserAction" value="false"/>
     <icon src="resources\ios\icon\icon.png" width="57" height="57"/>

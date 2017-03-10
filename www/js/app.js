@@ -97,7 +97,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     url: "/contact",
     views: {
       'contact-tab': {
-        templateUrl: "templates/contact.html"
+        templateUrl: "templates/contact.html",
+        controller: 'ContactCtrl'
       }
     }
   });

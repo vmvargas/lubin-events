@@ -14,17 +14,18 @@
 
         <h2 ng-if="announ.AnnouncementFor && announ.AnnouncementFor != 'Both'" class="icon ion-tshirt-outline"> Announcement For:</h2>
         <p ng-if="announ.AnnouncementFor && announ.AnnouncementFor != 'Both'" class="padding">{{announ.AnnouncementFor}}</p>
-        
+
         <h2 ng-if="announ.Attachment_Link" class="icon ion-paperclip"> Attachment Link:</h2>
         <a ng-if="announ.Attachment_Link" ng-click="openInExternalBrowser(announ.Attachment_Link)" class="padding">{{announ.Attachment_Link}}</a>
 
-        <h2 ng-if="announ.RSVP_Link" class="icon ion-link"> RSVP:</h2>
+        <h2 ng-if="announ.RSVP_Link" class="icon ion-paper-airplane"> RSVP:</h2>
         <a ng-if="announ.RSVP_Link" ng-click="openInExternalBrowser(announ.RSVP_Link)" class="padding">{{announ.RSVP_Link}}</a>
 
         <!--<p ng-if="announ.Building">{{announ.Building}}</p>-->
       </div>
 
       <div class="item item-body">
+        <h3 class="ion-social-twitch-outline"> Description:</h3>
         <p ng-if="announ.Message">{{announ.Message}}</p>
         <p ng-if="!announ.Message">No Message Provided</p>
       </div>
