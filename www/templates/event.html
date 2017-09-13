@@ -1,4 +1,4 @@
-<ion-view view-title="Event Description">
+<ion-view view-title="{{session.Headline}}">
   <ion-nav-bar class="bar-positive">
     <ion-nav-back-button>
     </ion-nav-back-button>
@@ -11,7 +11,11 @@
         <h2 ng-if="session.Subheader">{{session.Subheader}}</h2>
         <hr>
         <h2 class="ion-ios-clock-outline"> When:</h2>
-        <p class="padding">{{getDayName(session.Start_Year, session.Start_Month, session.Start_Day)}}, {{getMonthName(session.Start_Month)}}
+
+        <p class="padding">
+          {{session.Start_TimeHr + ':' + appendToMin(session.Start_TimeMin) + ' ' + session.Start_TimeAMPM + ' to ' + session.End_Time_Hr
+            + ':' + appendToMin(session.End_Time_Min) + ' ' + session.End_Time_AMPM}}<br>
+          {{getDayName(session.Start_Year, session.Start_Month, session.Start_Day)}}, {{getMonthName(session.Start_Month)}}
           {{session.Start_Day}} {{session.Start_Year}}
         </p>
         <h2 ng-if="session.Room || session.Building || session.Campus" class="icon ion-ios-location-outline"> Address:</h2>
@@ -29,12 +33,13 @@
         <p ng-if="session.Attire && session.Attire != 'Any'" class="padding">{{session.Attire}}</p>
 
         <h2 ng-if="session.Food_Provided && session.Food_Provided != 'No'" class="icon ion-pizza"> Food:</h2>
-        <p ng-if="session.Food_Provided && session.Food_Provided != 'No'" class="padding">{{session.Food_Provided}}</p>
+        <p ng-if="session.Food_Provided && session.Food_Provided != 'No' && session.Food_Provided == 'LightSnacks'" class="padding">Light Snacks</p>
+        <p ng-if="session.Food_Provided && session.Food_Provided != 'No' && session.Food_Provided != 'LightSnacks'" class="padding">{{session.Food_Provided}}</p>
 
         <h2 ng-if="session.Attachment_Link" class="icon ion-paperclip"> Attachment Link:</h2>
         <a ng-if="session.Attachment_Link" ng-click="openInExternalBrowser(session.Attachment_Link)" class="padding">{{session.Attachment_Link}}</a>
 
-        <h2 ng-if="session.RSVP_Link" class="icon ion-link"> RSVP:</h2>
+        <h2 ng-if="session.RSVP_Link" class="icon ion-paper-airplane"> RSVP:</h2>
         <a ng-if="session.RSVP_Link" ng-click="openInExternalBrowser(session.RSVP_Link)" class="padding">{{session.RSVP_Link}}</a>
 
       </div>
@@ -49,5 +54,6 @@
   <ion-footer-bar align-title="left" class="bar bar-footer bar-stable">
     <button class="button icon ion-share" ng-click="show()"> Share</button>
     <button class="button icon ion-android-calendar" ng-click="addToCalendar(session)"> Add to Calendar</button>
+    
   </ion-footer-bar>
 </ion-view>

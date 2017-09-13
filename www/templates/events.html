@@ -22,15 +22,15 @@
     <div class="list item-text-wrap">
       <div ng-repeat="session in sessions">
         <div class="item item-divider" style="" ng-if="showDate(session.Start_Day)">
-          {{getDayName(session.Start_Year, session.Start_Month, session.Start_Day)}}, {{getMonthName(session.Start_Month)}} {{session.Start_Day}}
+          {{getDayName(session.Start_Month, session.Start_Day, session.Start_Year)}}, {{getMonthName(session.Start_Month)}} {{session.Start_Day}},
           {{session.Start_Year}}
         </div>
         <a class="item" href="#/tab/events/{{session.Event_id}}">
          
           <h2>{{session.Headline}}</h2>
           <p>{{session.Subheader}}</p>
-          <p>{{session.Start_TimeHr + ':' + session.Start_TimeMin + ' ' + session.Start_TimeAMPM + ' to ' + session.End_Time_Hr
-            + ':' + session.End_Time_Min + ' ' + session.End_Time_AMPM}}</p>
+          <p>{{session.Start_TimeHr + ':' + appendToMin(session.Start_TimeMin) + ' ' + session.Start_TimeAMPM + ' to ' + session.End_Time_Hr
+            + ':' + appendToMin(session.End_Time_Min) + ' ' + session.End_Time_AMPM}}</p>
         </a>
       </div>
     </div>
