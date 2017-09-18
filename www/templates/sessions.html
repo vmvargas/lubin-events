@@ -1,0 +1,59 @@
+<<<<<<< HEAD
+<ion-view view-title="Sessions">
+  <ion-content>
+    <!--<ion-list>
+      <ion-item ng-repeat="session in sessions"
+                href="#/app/sessions/{{session.id}}">{{session.title}}</ion-item>
+                
+    </ion-list>-->
+
+<ion-view view-title="Events">
+
+  <ion-nav-buttons side="secondary">
+    <button class="button button-icon icon ion-ios-search-strong" ng-click="showFilterBar()">
+    </button>
+  </ion-nav-buttons>
+
+  <ion-content direction="y" scrollbar-y="false">
+
+    <!--<ion-refresher pulling-icon="ion-arrow-down-b" on-refresh="refreshItems()">
+    </ion-refresher>-->
+
+
+    <div class="list">
+      <!--<div class="item item-divider">
+    Candy Bars
+
+  </div>
+</div>
+
+  </div>-->
+      <a class="item item-avatar" ng-repeat="session in sessions" href="#/app/sessions/{{session.Event_id}}">
+        <img src="img/venkman.jpg">
+        <!--{{session.title}}-->
+        <h2>{{session.Headline}}</h2>
+        <p>{{session.Subheader}}</p>
+        <p>{{session.Start_TimeHr + ':' + session.Start_TimeMin + ' ' + session.Start_TimeAMPM + ' to ' + session.End_Time_Hr
+          + ':' + session.End_Time_Min + ' ' + session.End_Time_AMPM}}</p>
+        <p>{{getDayName(session.Start_Year, session.Start_Month, session.Start_Day)}}, {{getMonthName(session.Start_Month)}}
+          {{session.Start_Month}} {{session.Start_Year}}
+        </p>
+
+
+        <!--<p>{{convertTo24Hour(session.Start_TimeHr + ':' + session.Start_TimeMin + ' ' + session.Start_TimeAMPM)}}</p>-->
+
+        <!--<p>{{session.speaker}}</p>-->
+      </a>
+      <!--<div class="item item-divider">
+    Candy Bars
+  </div>-->
+    </div>
+
+
+    <div ng-if="sessions !== undefined && !sessions.length" class="no-results">
+      <p>No Results</p>
+    </div>
+
+>>>>>>> v5
+  </ion-content>
+</ion-view>
