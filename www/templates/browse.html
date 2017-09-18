@@ -1,5 +1,17 @@
 <ion-view view-title="Browse">
   <ion-content>
-      <h1>Browse</h1>
+                    <div class="card" ng-repeat="event in events">
+                    <div class="item item-divider">
+                        {{event.title}}
+                    </div>                    
+                    <div class="item item-text-wrap">
+                        {{ event.description }}
+                        <p/>
+                        <strong>When: {{ event.date | date:'short' }}</strong>
+<!--
+                        <p ng-if="event.status">This event is added to your calendar already!</p>
+<button ng-if="!event.status" ng-click="addEvent(event,$index)" class="button button-block button-balanced">Add to Calendar</button>-->
+                    </div>
+                </div>
   </ion-content>
 </ion-view>

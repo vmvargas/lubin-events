@@ -24,7 +24,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
 .config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
-
     .state('tabs', {
       url: '/tab',
       abstract: true,
@@ -37,7 +36,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
           templateUrl: "templates/events.html",
           controller: 'EventsCtrl'
         }
-
       }
     })
     .state('tabs.eventDiscription', {
