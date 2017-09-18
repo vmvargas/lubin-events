@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 angular.module('starter.controllers', ['starter.services', 'jett.ionic.filter.bar', 'ngCordova', 'ionic'])
 .controller('EventsCtrl', function ($scope, $timeout, $ionicFilterBar, $ionicLoading, Event) {
   //console.log('EventsCtrl');
@@ -17,76 +16,6 @@ angular.module('starter.controllers', ['starter.services', 'jett.ionic.filter.ba
         return "0" + min;
       }else
         return min;
-=======
-angular.module('starter.controllers', ['starter.services', 'jett.ionic.filter.bar'])
-    .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
-
-        // With the new view caching in Ionic, Controllers are only called
-        // when they are recreated or on app start, instead of every page change.
-        // To listen for when this page is active (for example, to refresh data),
-        // listen for the $ionicView.enter event:
-        //$scope.$on('$ionicView.enter', function(e) {
-        //});
-
-        // Form data for the login modal
-        $scope.loginData = {};
-
-        // Create the login modal that we will use later
-        $ionicModal.fromTemplateUrl('templates/login.html', {
-            scope: $scope
-        }).then(function (modal) {
-            $scope.modal = modal;
-        });
-
-        // Triggered in the login modal to close it
-        $scope.closeLogin = function () {
-            $scope.modal.hide();
-        };
-
-        // Open the login modal
-        $scope.login = function () {
-            $scope.modal.show();
-        };
-
-        // Perform the login action when the user submits the login form
-        $scope.doLogin = function () {
-            console.log('Doing login', $scope.loginData);
-
-            // Simulate a login delay. Remove this and replace with your login
-            // code if using a login system
-            $timeout(function () {
-                $scope.closeLogin();
-            }, 1000);
-        };
-    })
-
-.controller('SearchCtrl', function ($scope, Session) {
-    $scope.addToCalendar = function () {
-        if (window.plugins && window.plugins.calendar) {
-            // var hour = $scope.session.time.substring(0,$scope.session.time.indexOf(':'));
-            // if ($scope.session.time.indexOf("pm")>-1)
-            //     hour = parseInt(hour)+12;
-
-            var today = new Date();
-            console.log("Date year" + today.getFullYear() + " mo " + today.getMonth() + " day " + today.getDate());
-            var startDate = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 15, 00, 00);
-            var endDate = new Date();
-            var title = "Swapnil Tandel Title";
-            var room = "W404"
-            var description = "description description description description description description description description description.";
-            endDate.setTime(startDate.getTime() + 3600000); //one hour
-
-            alert(startDate);
-
-            window.plugins.calendar.createEvent(title, room, description, startDate, endDate,
-                function () {
-                    alert(title + " has been added to your calendar.");
-                },
-                function (error) {
-                    console.log("Calendar fail " + error);
-                });
-        } else console.log("Calendar plugin not available.");
->>>>>>> master
     }
     
   $scope.sessions = Event.query().$promise.then(function (result) {
@@ -154,42 +83,20 @@ angular.module('starter.controllers', ['starter.services', 'jett.ionic.filter.ba
     return monthArr[month - 1];
   }
 
-<<<<<<< HEAD
   $scope.tmptest = function (tmpVal) {
     return tmpVal;
   }
 
   $scope.convertTo24Hour = function (time) {
-=======
-$scope.convertTo24Hour  = function (time) {
->>>>>>> master
     var hours = parseInt(time.substr(0, 2));
     if (time.indexOf('a.m.') != -1 && hours == 12) {
       time = time.replace('12', '0');
     }
-    //console.log(time);
     if (time.indexOf('p.m.') != -1 && hours < 12) {
       time = time.replace(hours, (hours + 12));
     }
-    //console.log(time.replace(/(a.m.|p.m.)/, ''));
-
-// <<<<<<< HEAD
-// });
-// =======
     return time.replace(/(a.m.|p.m.)/, '');
   }
-
-  // $scope.refreshItems = function () {
-  //     if (filterBarInstance) {
-  //         filterBarInstance();
-  //         filterBarInstance = null;
-  //     }
-
-  //     $timeout(function () {
-  //         getItems();
-  //         $scope.$broadcast('scroll.refreshComplete');
-  //     }, 1000);
-  // };
 
   $scope.dayNumber = 0;
   $scope.showDate = function (num) {
@@ -214,10 +121,6 @@ $scope.convertTo24Hour  = function (time) {
     maxWidth: 200,
     showDelay: 0
   });
-
-    // $scope.session = Event.get({
-    //   eventId: $stateParams.eventId
-    // });
 
     $scope.session = Event.get({
       eventId: $stateParams.eventId
@@ -297,8 +200,6 @@ $scope.convertTo24Hour  = function (time) {
     if ($scope.session.Food_Provided != 'No') {
       $scope.showFood = true;
     }
-
-<<<<<<< HEAD
     $scope.openInExternalBrowser = function (url) {
       // Open in external browser
       window.open(url, '_system', 'location=yes');
@@ -357,46 +258,6 @@ $scope.convertTo24Hour  = function (time) {
         return min;
     }
 
-
-    /*
-    $scope.isEventExist = function (session) {
-      //alert(session.Message);
-      var rtnValue;
-
-      if (window.plugins && window.plugins.calendar) {
-
-      var start_time = $scope.convertTo24Hour(session.Start_TimeHr + ':' + session.Start_TimeMin + ' ' + session.Start_TimeAMPM);
-      var end_time = $scope.convertTo24Hour(session.End_Time_Hr + ':' + session.End_Time_Min + ' ' + session.End_Time_AMPM);
-
-        var startDate = new Date(session.Start_Year, session.Start_Month - 1, session.Start_Day,
-          start_time.split(':')[0], start_time.split(':')[1], 0, 0);
-        //console.log("Date year" + today.getFullYear() + " mo " + today.getMonth() + " day " + today.getDate());
-        //var startDate = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 15, 00, 00);
-        var endDate = new Date(session.Start_Year, session.Start_Month - 1, session.Start_Day,
-          end_time.split(':')[0], end_time.split(':')[1], 0, 0);
-
-        var title = session.Headline;
-        var room = session.Room;
-        var description = session.Message;
-        //endDate.setTime(startDate.getTime() + 3600000); //one hour
-        //alert(startDate);
-
-        window.plugins.calendar.findEvent(title, room, description, startDate, endDate,
-          function (message) {
-            alert('Calendar success: ' + JSON.stringify(message));
-            rtnValue = 1;
-          },
-          function (error) {
-            alert('Calendar error: ' + JSON.stringify(error));
-            console.log("Calendar fail " + error);
-            rtnValue = 0;
-          });
-      } else console.log("Calendar plugin not available.");
-
-      return rtnValue;
-    };
-    */
-
     $scope.addToCalendar = function (session) {
       //alert(session.Message);
       var start_time = $scope.convertTo24Hour(session.Start_TimeHr + ':' + session.Start_TimeMin + ' ' + session.Start_TimeAMPM);
@@ -406,8 +267,6 @@ $scope.convertTo24Hour  = function (time) {
 
         var startDate = new Date(session.Start_Year, session.Start_Month - 1, session.Start_Day,
           start_time.split(':')[0], start_time.split(':')[1], 0, 0);
-        //console.log("Date year" + today.getFullYear() + " mo " + today.getMonth() + " day " + today.getDate());
-        //var startDate = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 15, 00, 00);
         var endDate = new Date(session.Start_Year, session.Start_Month - 1, session.Start_Day,
           end_time.split(':')[0], end_time.split(':')[1], 0, 0);
 
@@ -442,11 +301,6 @@ $scope.convertTo24Hour  = function (time) {
     maxWidth: 200,
     showDelay: 0
   });
-
-    // $scope.announ = Announ.get({
-    //   announId: $stateParams.announId
-    // });
-
       $scope.announ = Announ.get({
       announId: $stateParams.announId
     }).$promise.then(function (result) {
@@ -500,7 +354,6 @@ $scope.convertTo24Hour  = function (time) {
     }, 2000);
   })
 
-
     $scope.showFilterBar = function () {
       filterBarInstance = $ionicFilterBar.show({
         items: $scope.announs,
@@ -520,43 +373,3 @@ $scope.convertTo24Hour  = function (time) {
       window.open(url, '_system', 'location=yes');
     };
   });
-=======
-        $scope.session = Session.get({
-            sessionId: $stateParams.sessionId
-        });
-
-        $scope.addToCalendar = function () {
-            if (window.plugins && window.plugins.calendar) {
-                // var hour = $scope.session.time.substring(0,$scope.session.time.indexOf(':'));
-                // if ($scope.session.time.indexOf("pm")>-1)
-                //     hour = parseInt(hour)+12;
-
-                var today = new Date();
-                console.log("Date year" + today.getFullYear() + " mo " + today.getMonth() + " day " + today.getDate());
-                var startDate = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 15, 00, 00);
-                var endDate = new Date();
-                var title = "Swapnil Tandel Title";
-                var room = "W404"
-                var description = "description description description description description description description description description.";
-                endDate.setTime(startDate.getTime() + 3600000); //one hour
-                alert(startDate);
-
-                window.plugins.calendar.createEvent(title, room, description, startDate, endDate,
-                    function () {
-                        alert(title + " has been added to your calendar.");
-                    },
-                    function (error) {
-                        console.log("Calendar fail " + error);
-                    });
-            } else console.log("Calendar plugin not available.");
-        };
-
-    })
-    .controller('ExampleController', function ($scope, Events) {
-
-        Events.get($cordovaCalendar).then(function (events) {
-            console.log("events", events);
-            $scope.events = events;
-        })
-    });
->>>>>>> master

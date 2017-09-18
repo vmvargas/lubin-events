@@ -24,7 +24,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
 .config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
-<<<<<<< HEAD
+
     .state('tabs', {
       url: '/tab',
       abstract: true,
@@ -37,34 +37,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
           templateUrl: "templates/events.html",
           controller: 'EventsCtrl'
         }
-=======
 
-    .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
-  })
-
-  .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
->>>>>>> master
       }
     })
     .state('tabs.eventDiscription', {
       url: "/events/:eventId",
       views: {
-<<<<<<< HEAD
         'events-tab': {
           templateUrl: "templates/event.html",
           controller: 'EventCtrl'
-=======
-        'menuContent': {
-          templateUrl: 'templates/browse.html'
->>>>>>> master
         }
       }
     })
