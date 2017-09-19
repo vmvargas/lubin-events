@@ -1,7 +1,9 @@
 {
   "name": "conference",
   "app_id": "d99d7205",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic1",
   "watchPatterns": []
 }
