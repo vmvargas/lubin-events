@@ -3,18 +3,23 @@
   "version": "1.1.1",
   "description": "conference: An Ionic project",
   "dependencies": {
-    "cordova-ios": "^4.4.0",
-    "cordova-plugin-console": "~1.0.4",
+    "cordova-ios": "^4.5.2",
+    "cordova-plugin-calendar": "~4.5.5",
+    "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-device": "~1.1.3",
+    "cordova-plugin-inappbrowser": "~1.5.0",
     "cordova-plugin-splashscreen": "~4.0.0",
     "cordova-plugin-statusbar": "~2.2.0",
+    "cordova-plugin-velda-devicefeedback": "~0.0.2",
     "cordova-plugin-whitelist": "~1.3.0",
+    "cordova-plugin-x-socialsharing": "~5.1.3",
     "gulp": "^3.5.6",
     "gulp-concat": "^2.2.0",
     "gulp-minify-css": "^0.3.0",
     "gulp-rename": "^1.2.0",
     "gulp-sass": "^2.0.4",
-    "ionic-plugin-keyboard": "~2.2.1"
+    "ionic-plugin-keyboard": "~2.2.1",
+    "cordova-android": "~6.3.0"
   },
   "devDependencies": {
     "bower": "^1.3.3",
@@ -32,12 +37,19 @@
   "cordovaPlatforms": [],
   "cordova": {
     "plugins": {
-      "cordova-plugin-console": {},
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-whitelist": {},
-      "ionic-plugin-keyboard": {}
-    }
+      "ionic-plugin-keyboard": {},
+      "cordova-plugin-calendar": {},
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-velda-devicefeedback": {},
+      "cordova-plugin-x-socialsharing": {}
+    },
+    "platforms": [
+      "ios",
+      "android"
+    ]
   }
 }
