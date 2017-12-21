@@ -182,7 +182,9 @@ angular.module('starter.controllers', ['starter.services', 'jett.ionic.filter.ba
     // Triggered on a button click, or some other target
     $scope.show = function () {
 
-      $scope.session.shareContent = $scope.session.Sponsored_by+" presents "+$scope.session.Headline+"\n"+$scope.session.Subheader+"\n"+ $scope.session.Start_TimeHr+ ':'+$scope.appendToMin($scope.session.Start_TimeMin)+" "+$scope.session.Start_TimeAMPM+' to '+$scope.session.End_Time_Hr+':'+$scope.appendToMin($scope.session.End_Time_Min)+" "+$scope.session.End_Time_AMPM+"\n"+$scope.getDayName($scope.session.Start_Year, $scope.session.Start_Month, $scope.session.Start_Day)+" "+$scope.getMonthName($scope.session.Start_Month)+" "+$scope.session.Start_Day+" "+$scope.session.Start_Year+"\n"+$scope.session.Room+", "+$scope.session.Building+", "+$scope.session.Campus+"\n\n"+$scope.session.Attachment_Link;
+      $scope.session.shareContent = $scope.session.Sponsored_by+" presents "+$scope.session.Headline+"\n"+$scope.session.Subheader+"\n"+ $scope.session.Start_TimeHr+ ':'+$scope.appendToMin($scope.session.Start_TimeMin)+" "+$scope.session.Start_TimeAMPM+' to '+$scope.session.End_Time_Hr+':'+$scope.appendToMin($scope.session.End_Time_Min)+" "+$scope.session.End_Time_AMPM+"\n"+$scope.getDayName($scope.session.Start_Year, $scope.session.Start_Month, $scope.session.Start_Day)+", "+$scope.getMonthName($scope.session.Start_Month)+" "+$scope.session.Start_Day+", "+$scope.session.Start_Year+"\n"+$scope.session.Room+", "+$scope.session.Building+", "+$scope.session.Campus+"\n"+$scope.session.Attachment_Link;
+
+      $scope.session.shareContentEmail = $scope.session.Sponsored_by+" presents "+$scope.session.Headline+"<br>"+$scope.session.Subheader+"<br>"+ $scope.session.Start_TimeHr+ ':'+$scope.appendToMin($scope.session.Start_TimeMin)+" "+$scope.session.Start_TimeAMPM+' to '+$scope.session.End_Time_Hr+':'+$scope.appendToMin($scope.session.End_Time_Min)+" "+$scope.session.End_Time_AMPM+"<br>"+$scope.getDayName($scope.session.Start_Year, $scope.session.Start_Month, $scope.session.Start_Day)+", "+$scope.getMonthName($scope.session.Start_Month)+" "+$scope.session.Start_Day+", "+$scope.session.Start_Year+"<br>"+$scope.session.Room+", "+$scope.session.Building+", "+$scope.session.Campus+"<br>"+$scope.session.Attachment_Link+"<br><br>"+$scope.session.Message;
 
       console.log($scope.session.shareContent);
 
@@ -211,7 +213,7 @@ angular.module('starter.controllers', ['starter.services', 'jett.ionic.filter.ba
               $cordovaSocialSharing.shareViaSMS($scope.session.shareContent);
               return true;
             case 1:
-              $cordovaSocialSharing.shareViaEmail($scope.session.shareContent+"\n\n"+$scope.session.Message, $scope.session.Headline, null, null, null, null);
+              $cordovaSocialSharing.shareViaEmail($scope.session.shareContentEmail, $scope.session.Headline, null, null, null, null);
               return true;
             case 2:
               $cordovaSocialSharing.shareViaWhatsApp($scope.session.shareContent, null, null);
