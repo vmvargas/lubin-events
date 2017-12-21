@@ -45,7 +45,8 @@
       </div>
       <div class="item item-body">
         <h3 class="ion-social-twitch-outline"> Description:</h3>
-        <p ng-if="session.Message">{{session.Message}}</p>
+        <!-- <p ng-if="session.Message">{{session.Message}}</p> -->
+        <div class="item-description" ng-if="session.Message" ng-bind-html="session.Message"></div>
         <p ng-if="!session.Message">No Description Provided</p>
       </div>
 

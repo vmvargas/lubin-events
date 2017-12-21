@@ -1,4 +1,4 @@
-# The Lubin Business School Events App  
+# The Lubin Business School Events App
 
 The Lubin Business School Events app is for business majors at Pace University. View events and announcements that you can add to your own calendar and share with friends. Never miss an important networking event, executive visit, scholarship opportunity, career workshop, or other exciting campus event for students at the Lubin School.
 
@@ -7,18 +7,23 @@ The Lubin Business School Events app is for business majors at Pace University. 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
+
 First, install [Node.js](https://nodejs.org/en/). Then, install the latest Cordova and Ionic command-line tools in your terminal. Follow the Android and iOS platform guides to install required tools for development.
-```
+
+```bash
 npm install -g cordova ionic
 ```
+
 [More about ionic](https://ionicframework.com/getting-started/)
 
 ### Run the App
+
 1. Make sure Ionic, node and cordova are properly installed.
 2. Open terminal on Project’s folder.
 3. Fire following command to run the app in a browser: 
-```
-$ ionic serve
+
+```bash
+ionic serve
 ```
 
 ## Built With
@@ -32,9 +37,5 @@ $ ionic serve
 
 ## Authors
 
-* **Swapnil** - *Initial work*.
+* **Swapnil Tandel** - *Initial work*.
 * [**Victor Vargas**](https://vmvargas.com/) - *Updates and Publishing*.
-
-
-## License
-See the [LICENSE.md](LICENSE.md) file for details

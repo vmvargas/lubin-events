@@ -1,1 +1,17 @@
 /* Empty. Add your own CSS if you like */
+.item.item-body {
+    overflow: inherit;
+}
+
+.item-description ol {
+    list-style: decimal;
+}
+
+.item-description ul {
+    list-style: disc;
+}
+
+.item-description ul, .item-description ol  {
+    list-style-position: inside;
+    padding: 15px;
+}

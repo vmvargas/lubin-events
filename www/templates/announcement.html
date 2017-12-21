@@ -20,13 +20,12 @@
 
         <h2 ng-if="announ.RSVP_Link" class="icon ion-paper-airplane"> RSVP:</h2>
         <a ng-if="announ.RSVP_Link" ng-click="openInExternalBrowser(announ.RSVP_Link)" class="padding">{{announ.RSVP_Link}}</a>
-
-        <!--<p ng-if="announ.Building">{{announ.Building}}</p>-->
       </div>
 
       <div class="item item-body">
         <h3 class="ion-social-twitch-outline"> Description:</h3>
-        <p ng-if="announ.Message">{{announ.Message}}</p>
+        <!-- <p ng-if="announ.Message">{{announ.Message}}</p> -->
+        <div class="item-description" ng-if="announ.Message" ng-bind-html="announ.Message"></div>
         <p ng-if="!announ.Message">No Message Provided</p>
       </div>
 

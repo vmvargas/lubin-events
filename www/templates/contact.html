@@ -1,61 +1,70 @@
 <ion-view title="Contact">
-    
-      <ion-nav-bar class="bar-positive">  
-  <!--<ion-nav-buttons side="secondary">
+
+  <ion-nav-bar class="bar-positive">
+    <!--<ion-nav-buttons side="secondary">
     <button class="button button-icon icon ion-ios-search-strong" ng-click="showFilterBar()">
     </button>-->
-  </ion-nav-buttons>
-</ion-nav-bar>
+    </ion-nav-buttons>
+  </ion-nav-bar>
 
-    <ion-content>
+  <ion-content>
 
-<div class="list list-inset">
-<h3>ListServ</h3>
-    <div class="item">
-      <h3>Submit a ListServ Event or Announcement</h3>
-      <p><a ng-click="openInExternalBrowser('https://appsrv.pace.edu/Lubin/ListServ/')">https://appsrv.pace.edu/Lubin/ListServ/</a></p>
-
+    <div class="list list-inset">
+      <h3>Submit an event or announcement</h3>
+      <div class="item">
+        <h3>For Pace students, faculty and staff only:</h3>
+        <p>
+          <a ng-click="openInExternalBrowser('https://appsrv.pace.edu/Lubin/ListServ/')">https://appsrv.pace.edu/Lubin/ListServ/</a>
+        </p>
+      </div>
     </div>
-</div>
+    <div class="list list-inset">
+      <h3>Contact Us
+        <h3>
+          <div class="item">
+            <p>
+              <i class="icon ion-ios-telephone"></i>&nbsp;&nbsp;
+              <a ng-href="tel:+1(212)618-6500">+1 (212) 618-6500</a>
+            </p>
+          </div>
 
-<div class="list list-inset">
-<h3>Open Hours</h3>
-    <div class="item">
-      <h3>Monday to Friday</h3>
-      <p>09:00am - 5:00pm</p>
-    </div>
-</div>
-
-<div class="list list-inset">
-<h3>Get in touch<h3>
-    <div class="item">
-      <i class="icon ion-ios-telephone"></i> Call Us
-      <p><a ng-href="tel:+1-212-618-6500">+1-212-618-6500</a></p>
-    </div>
-
-    <div class="item">
-      <i class="icon ion-email"></i> Send us Email
-      <p><a ng-href="mailto:lubin@pace.edu">lubin@pace.edu</a></p>
-    </div>
-</div>
-
-<div class="list list-inset">
-<h3>Get social with us<h3>
-    <div class="item">
-      <i class="icon ion-social-facebook"></i> Facebook
-      <p><a ng-click="openInExternalBrowser('https://www.facebook.com/lubinschool')">https://www.facebook.com/lubinschool</a></p>
+          <div class="item">
+            <p>
+              <i class="icon ion-email"></i>&nbsp;&nbsp;
+              <a ng-href="mailto:lubin@pace.edu">lubin@pace.edu</a>
+            </p>
+          </div>
     </div>
 
-    <div class="item">
-      <i class="icon ion-social-instagram"></i> Instagram
-      <p><a ng-click="openInExternalBrowser('https://www.instagram.com/lubinschoolofbusiness/')">https://www.instagram.com/lubinschoolofbusiness/</a></p>
+    <div class="list list-inset">
+      <h3>Follow Us
+        <h3>
+          <div class="item">
+            <i class="icon ion-social-facebook"></i> Facebook
+            <p>
+              <a ng-click="openInExternalBrowser('https://www.facebook.com/lubinschool/')">https://www.facebook.com/lubinschool</a>
+            </p>
+          </div>
+
+          <div class="item">
+            <i class="icon ion-social-instagram"></i> Instagram
+            <p>
+              <a ng-click="openInExternalBrowser('https://www.instagram.com/lubinschoolofbusiness/')">https://www.instagram.com/lubinschoolofbusiness</a>
+            </p>
+          </div>
+
+          <div class="item">
+            <i class="icon ion-social-twitter"></i> Twitter
+            <p>
+              <a ng-click="openInExternalBrowser('https://twitter.com/lubinbschool/')">https://twitter.com/lubinbschool</a>
+            </p>
+          </div>
+          <div class="item">
+              <h3>#LubinLife</h3>
+            </div>
     </div>
 
-    <div class="item">
-      <i class="icon ion-social-twitter"></i> Instagram
-      <p><a ng-click="openInExternalBrowser('https://twitter.com/lubinbschool')">https://twitter.com/lubinbschool</a></p>
-    </div>
-</div>
 
-    </ion-content>
+    <p class="text-center">&#169; {{copyright_year}} Pace University</p>
+  </ion-content>
 </ion-view>
