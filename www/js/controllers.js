@@ -111,7 +111,6 @@ angular.module('starter.controllers', ['starter.services', 'jett.ionic.filter.ba
 
   .controller('EventCtrl', function ($scope, $stateParams, $cordovaSocialSharing, $ionicActionSheet, $timeout, $ionicLoading, $ionicPopup, Event) {
 
-
     $ionicLoading.show({
       content: 'Loading',
       animation: 'fade-in',
@@ -123,7 +122,7 @@ angular.module('starter.controllers', ['starter.services', 'jett.ionic.filter.ba
     $scope.session = Event.get({
       eventId: $stateParams.eventId
     }).$promise.then(function (result) {
-      //console.log(result);
+      console.log(result);
       $scope.session = result;
       $ionicLoading.hide();
     }, function (error) {
@@ -138,9 +137,54 @@ angular.module('starter.controllers', ['starter.services', 'jett.ionic.filter.ba
       }, 2000);
     })
 
+    $scope.appendToMin = function (min) {
+      if (min < 10) {
+        return "0" + min;
+      } else
+        return min;
+    }
+
+    $scope.getDayName = function (month, day, year) {
+      var d = new Date(year, (month - 1), day);
+      //console.log(year + '-' + month + '-' + day);
+
+      var weekday = new Array(7);
+      weekday[0] = "Sunday";
+      weekday[1] = "Monday";
+      weekday[2] = "Tuesday";
+      weekday[3] = "Wednesday";
+      weekday[4] = "Thursday";
+      weekday[5] = "Friday";
+      weekday[6] = "Saturday";
+
+      return weekday[d.getDay()];
+    }
+
+    $scope.getMonthName = function (month) {
+      // var d = new Date(year, month, day);
+      var monthArr = new Array();
+      monthArr[0] = "January";
+      monthArr[1] = "February";
+      monthArr[2] = "March";
+      monthArr[3] = "April";
+      monthArr[4] = "May";
+      monthArr[5] = "June";
+      monthArr[6] = "July";
+      monthArr[7] = "August";
+      monthArr[8] = "September";
+      monthArr[9] = "October";
+      monthArr[10] = "November";
+      monthArr[11] = "December";
+
+      return monthArr[month - 1];
+    }
 
     // Triggered on a button click, or some other target
     $scope.show = function () {
+
+      $scope.session.shareContent = $scope.session.Sponsored_by+" presents "+$scope.session.Headline+"\n"+$scope.session.Subheader+"\n"+ $scope.session.Start_TimeHr+ ':'+$scope.appendToMin($scope.session.Start_TimeMin)+" "+$scope.session.Start_TimeAMPM+' to '+$scope.session.End_Time_Hr+':'+$scope.appendToMin($scope.session.End_Time_Min)+" "+$scope.session.End_Time_AMPM+"\n"+$scope.getDayName($scope.session.Start_Year, $scope.session.Start_Month, $scope.session.Start_Day)+" "+$scope.getMonthName($scope.session.Start_Month)+" "+$scope.session.Start_Day+" "+$scope.session.Start_Year+"\n"+$scope.session.Room+", "+$scope.session.Building+", "+$scope.session.Campus+"\n\n"+$scope.session.Attachment_Link;
+
+      console.log($scope.session.shareContent);
 
       // Show the action sheet
       var hideSheet = $ionicActionSheet.show({
@@ -164,19 +208,19 @@ angular.module('starter.controllers', ['starter.services', 'jett.ionic.filter.ba
         buttonClicked: function (index) {
           switch (index) {
             case 0:
-              $cordovaSocialSharing.shareViaSMS($scope.session.Message);
+              $cordovaSocialSharing.shareViaSMS($scope.session.shareContent);
               return true;
             case 1:
-              $cordovaSocialSharing.shareViaEmail($scope.session.Message, $scope.session.Sponsored_by + " presents", null, null, null, null);
+              $cordovaSocialSharing.shareViaEmail($scope.session.shareContent+"\n\n"+$scope.session.Message, $scope.session.Headline, null, null, null, null);
               return true;
             case 2:
-              $cordovaSocialSharing.shareViaWhatsApp($scope.session.Message, null, null);
+              $cordovaSocialSharing.shareViaWhatsApp($scope.session.shareContent, null, null);
               return true;
             case 3:
-              $cordovaSocialSharing.shareViaFacebook($scope.session.Message, null, null);
+              $cordovaSocialSharing.shareViaFacebook($scope.session.shareContent, null, null);
               return true;
             case 4:
-              $cordovaSocialSharing.shareViaTwitter($scope.session.Message);
+              $cordovaSocialSharing.shareViaTwitter($scope.session.shareContent);
               return true;
           }
         }
@@ -215,45 +259,6 @@ angular.module('starter.controllers', ['starter.services', 'jett.ionic.filter.ba
       //console.log(time.replace(/(a.m.|p.m.)/, ''));
 
       return time.replace(/(a.m.|p.m.)/, '');
-    }
-    $scope.getDayName = function (month, day, year) {
-      var d = new Date(year, month, day);
-      var weekday = new Array(7);
-      weekday[0] = "Sunday";
-      weekday[1] = "Monday";
-      weekday[2] = "Tuesday";
-      weekday[3] = "Wednesday";
-      weekday[4] = "Thursday";
-      weekday[5] = "Friday";
-      weekday[6] = "Saturday";
-
-      return weekday[d.getDay()];
-    }
-
-    $scope.getMonthName = function (month) {
-      // var d = new Date(year, month, day);
-      var monthArr = new Array();
-      monthArr[0] = "January";
-      monthArr[1] = "February";
-      monthArr[2] = "March";
-      monthArr[3] = "April";
-      monthArr[4] = "May";
-      monthArr[5] = "June";
-      monthArr[6] = "July";
-      monthArr[7] = "August";
-      monthArr[8] = "September";
-      monthArr[9] = "October";
-      monthArr[10] = "November";
-      monthArr[11] = "December";
-
-      return monthArr[month - 1];
-    }
-
-    $scope.appendToMin = function (min) {
-      if (min < 10) {
-        return "0" + min;
-      } else
-        return min;
     }
 
     $scope.addToCalendar = function (session) {

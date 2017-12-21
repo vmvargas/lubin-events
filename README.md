@@ -37,5 +37,5 @@ ionic serve
 
 ## Authors
 
-* **Swapnil Tandel** - *Initial work*.
+* [**Swapnil Tandel**](st34027n@pace.edu) - *Initial work*.
 * [**Victor Vargas**](https://vmvargas.com/) - *Updates and Publishing*.
