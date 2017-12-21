@@ -14,20 +14,16 @@
 
         <p class="padding">
           {{session.Start_TimeHr + ':' + appendToMin(session.Start_TimeMin) + ' ' + session.Start_TimeAMPM + ' to ' + session.End_Time_Hr
-            + ':' + appendToMin(session.End_Time_Min) + ' ' + session.End_Time_AMPM}}<br>
-          {{getDayName(session.Start_Year, session.Start_Month, session.Start_Day)}}, {{getMonthName(session.Start_Month)}}
-          {{session.Start_Day}} {{session.Start_Year}}
+          + ':' + appendToMin(session.End_Time_Min) + ' ' + session.End_Time_AMPM}}
+          <br> {{getDayName(session.Start_Year, session.Start_Month, session.Start_Day)}}, {{getMonthName(session.Start_Month)}}
+          {{session.Start_Day}}, {{session.Start_Year}}
         </p>
         <h2 ng-if="session.Room || session.Building || session.Campus" class="icon ion-ios-location-outline"> Address:</h2>
         <div class="padding">
-        <p ng-if="session.Room">{{session.Room}}</p>
-        <p ng-if="session.Building">{{session.Building}}</p>
-        <p ng-if="session.Campus">{{session.Campus}}</p>
+          <p ng-if="session.Room">{{session.Room}}</p>
+          <p ng-if="session.Building">{{session.Building}}</p>
+          <p ng-if="session.Campus">{{session.Campus}}</p>
         </div>
-
-
-        <h2 ng-if="session.AnnouncementFor && session.AnnouncementFor != 'Both'" class="icon ion-tshirt-outline"> Announcement For:</h2>
-        <p ng-if="session.AnnouncementFor && session.AnnouncementFor != 'Both'" class="padding">{{session.AnnouncementFor}}</p>
 
         <h2 ng-if="session.Attire && session.Attire != 'Any'" class="icon ion-tshirt-outline"> Attire:</h2>
         <p ng-if="session.Attire && session.Attire != 'Any'" class="padding">{{session.Attire}}</p>
@@ -55,6 +51,6 @@
   <ion-footer-bar align-title="left" class="bar bar-footer bar-stable">
     <button class="button icon ion-share" ng-click="show()"> Share</button>
     <button class="button icon ion-android-calendar" ng-click="addToCalendar(session)"> Add to Calendar</button>
-    
+
   </ion-footer-bar>
 </ion-view>

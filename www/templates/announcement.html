@@ -10,10 +10,6 @@
         <p ng-if="announ.Sponsored_by">{{announ.Sponsored_by}} presents</p>
         <h3 ng-if="announ.Headline">{{announ.Headline}}</h3>
         <h2 ng-if="announ.Subheader">{{announ.Subheader}}</h2>
-        <hr ng-if="announ.AnnouncementFor || announ.AnnouncementFor != 'Both' || announ.RSVP_Link">
-
-        <h2 ng-if="announ.AnnouncementFor && announ.AnnouncementFor != 'Both'" class="icon ion-tshirt-outline"> Announcement For:</h2>
-        <p ng-if="announ.AnnouncementFor && announ.AnnouncementFor != 'Both'" class="padding">{{announ.AnnouncementFor}}</p>
 
         <h2 ng-if="announ.Attachment_Link" class="icon ion-paperclip"> Attachment Link:</h2>
         <a ng-if="announ.Attachment_Link" ng-click="openInExternalBrowser(announ.Attachment_Link)" class="padding">{{announ.Attachment_Link}}</a>
@@ -30,6 +26,8 @@
       </div>
 
     </div>
-
   </ion-content>
+  <ion-footer-bar align-title="left" class="bar bar-footer bar-stable">
+    <button class="button icon ion-share" ng-click="share()">Share</button>
+  </ion-footer-bar>
 </ion-view>

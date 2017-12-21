@@ -122,7 +122,7 @@ angular.module('starter.controllers', ['starter.services', 'jett.ionic.filter.ba
     $scope.session = Event.get({
       eventId: $stateParams.eventId
     }).$promise.then(function (result) {
-      console.log(result);
+      //console.log(result);
       $scope.session = result;
       $ionicLoading.hide();
     }, function (error) {
@@ -181,12 +181,9 @@ angular.module('starter.controllers', ['starter.services', 'jett.ionic.filter.ba
 
     // Triggered on a button click, or some other target
     $scope.show = function () {
+      $scope.session.shareContent = $scope.session.Sponsored_by + " presents " + $scope.session.Headline + "\n" + $scope.session.Subheader + "\n" + $scope.session.Start_TimeHr + ':' + $scope.appendToMin($scope.session.Start_TimeMin) + " " + $scope.session.Start_TimeAMPM + ' to ' + $scope.session.End_Time_Hr + ':' + $scope.appendToMin($scope.session.End_Time_Min) + " " + $scope.session.End_Time_AMPM + "\n" + $scope.getDayName($scope.session.Start_Year, $scope.session.Start_Month, $scope.session.Start_Day) + ", " + $scope.getMonthName($scope.session.Start_Month) + " " + $scope.session.Start_Day + ", " + $scope.session.Start_Year + "\n" + $scope.session.Room + ", " + $scope.session.Building + ", " + $scope.session.Campus + "\n" + $scope.session.Attachment_Link;
 
-      $scope.session.shareContent = $scope.session.Sponsored_by+" presents "+$scope.session.Headline+"\n"+$scope.session.Subheader+"\n"+ $scope.session.Start_TimeHr+ ':'+$scope.appendToMin($scope.session.Start_TimeMin)+" "+$scope.session.Start_TimeAMPM+' to '+$scope.session.End_Time_Hr+':'+$scope.appendToMin($scope.session.End_Time_Min)+" "+$scope.session.End_Time_AMPM+"\n"+$scope.getDayName($scope.session.Start_Year, $scope.session.Start_Month, $scope.session.Start_Day)+", "+$scope.getMonthName($scope.session.Start_Month)+" "+$scope.session.Start_Day+", "+$scope.session.Start_Year+"\n"+$scope.session.Room+", "+$scope.session.Building+", "+$scope.session.Campus+"\n"+$scope.session.Attachment_Link;
-
-      $scope.session.shareContentEmail = $scope.session.Sponsored_by+" presents "+$scope.session.Headline+"<br>"+$scope.session.Subheader+"<br>"+ $scope.session.Start_TimeHr+ ':'+$scope.appendToMin($scope.session.Start_TimeMin)+" "+$scope.session.Start_TimeAMPM+' to '+$scope.session.End_Time_Hr+':'+$scope.appendToMin($scope.session.End_Time_Min)+" "+$scope.session.End_Time_AMPM+"<br>"+$scope.getDayName($scope.session.Start_Year, $scope.session.Start_Month, $scope.session.Start_Day)+", "+$scope.getMonthName($scope.session.Start_Month)+" "+$scope.session.Start_Day+", "+$scope.session.Start_Year+"<br>"+$scope.session.Room+", "+$scope.session.Building+", "+$scope.session.Campus+"<br>"+$scope.session.Attachment_Link+"<br><br>"+$scope.session.Message;
-
-      console.log($scope.session.shareContent);
+      $scope.session.shareContentEmail = $scope.session.Sponsored_by + " presents " + $scope.session.Headline + "<br>" + $scope.session.Subheader + "<br>" + $scope.session.Start_TimeHr + ':' + $scope.appendToMin($scope.session.Start_TimeMin) + " " + $scope.session.Start_TimeAMPM + ' to ' + $scope.session.End_Time_Hr + ':' + $scope.appendToMin($scope.session.End_Time_Min) + " " + $scope.session.End_Time_AMPM + "<br>" + $scope.getDayName($scope.session.Start_Year, $scope.session.Start_Month, $scope.session.Start_Day) + ", " + $scope.getMonthName($scope.session.Start_Month) + " " + $scope.session.Start_Day + ", " + $scope.session.Start_Year + "<br>" + $scope.session.Room + ", " + $scope.session.Building + ", " + $scope.session.Campus + "<br>" + $scope.session.Attachment_Link + "<br><br>" + $scope.session.Message;
 
       // Show the action sheet
       var hideSheet = $ionicActionSheet.show({
@@ -298,7 +295,6 @@ angular.module('starter.controllers', ['starter.services', 'jett.ionic.filter.ba
   })
   .controller('AnnounCtrl', function ($scope, $stateParams, $ionicLoading, Announ) {
 
-
     $ionicLoading.show({
       content: 'Loading',
       animation: 'fade-in',
@@ -306,10 +302,11 @@ angular.module('starter.controllers', ['starter.services', 'jett.ionic.filter.ba
       maxWidth: 200,
       showDelay: 0
     });
+
     $scope.announ = Announ.get({
       announId: $stateParams.announId
     }).$promise.then(function (result) {
-      // console.log(result);
+      console.log(result);
       $scope.announ = result;
       $ionicLoading.hide();
     }, function (error) {
@@ -322,7 +319,55 @@ angular.module('starter.controllers', ['starter.services', 'jett.ionic.filter.ba
       $timeout(function () {
         $ionicLoading.hide();
       }, 2000);
-    })
+    });
+
+    $scope.share = function () {
+      $scope.announ.shareContent = $scope.announ.Sponsored_by + " presents " + $scope.announ.Headline + "\n" + $scope.announ.Subheader;
+
+      $scope.announ.shareContentEmail = $scope.announ.Sponsored_by + " presents " + $scope.announ.Headline + "<br>" + $scope.announ.Subheader + $scope.announ.Message;
+
+      console.log($scope.announ.shareContent);
+
+      // Show the action sheet
+      var hideSheet = $ionicActionSheet.show({
+        buttons: [{
+          text: '<i class="icon ion-android-textsms"></i> SMS'
+        }, {
+          text: '<i class="icon ion-email"></i> Email'
+        }, {
+          text: '<i class="icon ion-social-whatsapp"></i> Whatsapp'
+        }, {
+          text: '<i class="icon ion-social-facebook"></i> Facebook'
+        }, {
+          text: '<i class="icon ion-social-twitter"></i> Twitter'
+        }],
+        //destructiveText: 'Delete',
+        titleText: 'Share this Via',
+        cancelText: 'Cancel',
+        cancel: function () {
+          // add cancel code..
+        },
+        buttonClicked: function (index) {
+          switch (index) {
+            case 0:
+              $cordovaSocialSharing.shareViaSMS($scope.announ.shareContent);
+              return true;
+            case 1:
+              $cordovaSocialSharing.shareViaEmail($scope.announ.shareContentEmail, $scope.announ.Headline, null, null, null, null);
+              return true;
+            case 2:
+              $cordovaSocialSharing.shareViaWhatsApp($scope.announ.shareContent, null, null);
+              return true;
+            case 3:
+              $cordovaSocialSharing.shareViaFacebook($scope.announ.shareContent, null, null);
+              return true;
+            case 4:
+              $cordovaSocialSharing.shareViaTwitter($scope.announ.shareContent);
+              return true;
+          }
+        }
+      });
+    };
 
     $scope.openInExternalBrowser = function (url) {
       // Open in external browser
