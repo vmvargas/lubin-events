@@ -293,7 +293,7 @@ angular.module('starter.controllers', ['starter.services', 'jett.ionic.filter.ba
     };
 
   })
-  .controller('AnnounCtrl', function ($scope, $stateParams, $ionicLoading, Announ) {
+  .controller('AnnounCtrl', function ($scope, $stateParams, $ionicLoading, Announ, $ionicActionSheet, $cordovaSocialSharing) {
 
     $ionicLoading.show({
       content: 'Loading',
@@ -306,7 +306,7 @@ angular.module('starter.controllers', ['starter.services', 'jett.ionic.filter.ba
     $scope.announ = Announ.get({
       announId: $stateParams.announId
     }).$promise.then(function (result) {
-      console.log(result);
+      //console.log(result);
       $scope.announ = result;
       $ionicLoading.hide();
     }, function (error) {
@@ -326,7 +326,7 @@ angular.module('starter.controllers', ['starter.services', 'jett.ionic.filter.ba
 
       $scope.announ.shareContentEmail = $scope.announ.Sponsored_by + " presents " + $scope.announ.Headline + "<br>" + $scope.announ.Subheader + $scope.announ.Message;
 
-      console.log($scope.announ.shareContent);
+      //console.log($scope.announ.shareContent);
 
       // Show the action sheet
       var hideSheet = $ionicActionSheet.show({

@@ -3,9 +3,11 @@
   "version": "1.1.1",
   "description": "conference: An Ionic project",
   "dependencies": {
+    "@ionic/pro": "^1.0.16",
     "cordova-android": "~6.3.0",
     "cordova-ios": "^4.5.2",
     "cordova-plugin-add-swift-support": "^1.7.0",
+    "cordova-plugin-app-version": "^0.1.9",
     "cordova-plugin-calendar": "~4.5.5",
     "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-device": "~1.1.3",
