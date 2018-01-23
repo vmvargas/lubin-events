@@ -278,7 +278,7 @@ angular.module('starter.controllers', ['starter.services', 'jett.ionic.filter.ba
         //endDate.setTime(startDate.getTime() + 3600000); //one hour
         //alert(startDate);
 
-        window.plugins.calendar.createEvent(title, room, description, startDate, endDate,
+        window.plugins.calendar.createEventInteractively(title, room, description, startDate, endDate,
           function () {
             $scope.showAlert("Success", title + " has been added to your calendar.");
           },
