@@ -1,3 +1,6 @@
+![cover image](screenshots/cover.jpg)
+
+
 # The Lubin Business School Events App
 
 The Lubin Business School Events app is for business majors at Pace University. View events and announcements that you can add to your own calendar and share with friends. Never miss an important networking event, executive visit, scholarship opportunity, career workshop, or other exciting campus event for students at the Lubin School.
